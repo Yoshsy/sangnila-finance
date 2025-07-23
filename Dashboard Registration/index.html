@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Registration</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+        body {
+            font-family: 'Geologica', sans-serif;
+            background: linear-gradient(to right, #b3c4de, #eaeff6);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+<div class="p-6">
+<header class="bg-gradient-to-r from-[#1EB8CD] to-[#Eaeff6] p-6 mb-6">
+<h1 class="text-2xl font-bold text-white">Registration</h1>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+<div class="bg-white p-6 rounded-2xl shadow-md">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm text-gray-500">Total Candidates</p>
+<p class="text-4xl font-bold">57</p>
+<p class="text-xs text-gray-400 mt-1">Have submitted the registration</p>
+</div>
+<span class="material-icons text-gray-400">person</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-2xl shadow-md">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm text-gray-500">Pending</p>
+<p class="text-4xl font-bold">4</p>
+<p class="text-xs text-gray-400 mt-1">Awaiting document verification</p>
+</div>
+<span class="material-icons text-gray-400">hourglass_empty</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-2xl shadow-md">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm text-gray-500">Accepted</p>
+<p class="text-4xl font-bold text-green-500">+7</p>
+<p class="text-xs text-gray-400 mt-1">Candidates approved and verified</p>
+</div>
+<span class="material-icons text-gray-400">check_circle_outline</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+<div class="md:col-span-2 bg-white p-6 rounded-2xl shadow-md">
+<h2 class="text-lg font-bold mb-4">Monthly Registration</h2>
+<canvas id="monthlyRegistrationChart"></canvas>
+</div>
+<div class="bg-white p-6 rounded-2xl shadow-md">
+<h2 class="text-lg font-bold mb-4">Recent Registers</h2>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<img alt="Zakaria Ramadan" class="w-10 h-10 rounded-full mr-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3gClVRMgG8X5dHUdWD-V7pCx4ytGVr4WVHp3UzuOD0tl1Gp2TZAUIoYAeEA8yVUDxos43coJXxl00SYkqjZdl14TkmN9Pj8U5VmIS39sTN8rCQFYFW2ht5r9cMRm7Smv9MU_P06GSQLYFJ9E88q0rrArHKWLZRhD9mQqqXA-4cjJ8VfddHsnD7ZEktoq3H-qpE2AftyZjBgK9KMIHiaxvW7n9Lp9dEE3PslC9D5AgwN3VYZo1wsuzs7deS3tCzJyNax4zz6weaQ"/>
+<div>
+<p class="font-semibold">Zakaria Ramadan</p>
+<p class="text-xs text-gray-500">zakaria@gmail.com</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xs text-gray-400">03-07-2025 11:31 PM</p>
+<p class="text-xs font-semibold text-green-500">Accepted</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<img alt="Clauvert" class="w-10 h-10 rounded-full mr-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0d9c6Yd1R4b62tLWDG8Tf1JxXh49lSYANXHo2mnL6RpwYaEFRQrVLkh6sPyUOck8XAYJKUk06mil2H_WB3JLip_HZ4hTGbbl0dDk1SPTxG5Gx86TeUW3djCdjL4SsoWnxitYL8olsIWP4faaXokd8dBEGMCdBJOnTlRAfsthENSc3CI24tPvoIFxEmWTqxP7uJRN0buKGYEHNVjbkrU6cxrIAWjK5PTPlXtsIkYooUMzQ4isK_2pXUphb9sBkJWgOzkSdf2cjWg"/>
+<div>
+<p class="font-semibold">Clauvert</p>
+<p class="text-xs text-gray-500">clauvert@gmail.com</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xs text-gray-400">30-07-2025 11:04 PM</p>
+<p class="text-xs font-semibold text-green-500">Accepted</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<img alt="Radika" class="w-10 h-10 rounded-full mr-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBq9GVHQeq1OOw25T39uhgol-TkqeNcPjDA7uSyTg6MF4iudmOieuRRzyvtmMBDivb51dk-nm0YsOejSSxoBxmYez9V4q9kXbrzTgw0VHhDFuIGLliGGt7ZMG4OoZ0k9dmwmHOUN_91bAaZX30PRBFsuRyjMkee4YdKx85epOccR63H4EQibsS2wfKIyWNinOtlJjEbj7agme_X4yy3bEjHXqyCYHEdM1vxMqBbcU58Tyzj8PugF9OhuO9d-VWbjLGsm2oh7aUEvA"/>
+<div>
+<p class="font-semibold">Radika</p>
+<p class="text-xs text-gray-500">radika@gmail.com</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xs text-gray-400">19-07-2025 12:00 PM</p>
+<p class="text-xs font-semibold text-green-500">Accepted</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<img alt="Fajar" class="w-10 h-10 rounded-full mr-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC29gfp6WLFsMeEQAX6jgiYpDiVqvWoVQCd35Xjp1d63-mJpuSEyxtcJSTpav3KXjCfUy_Ad37CQb08Gph72F-p3FMf-MA3pHQ4WAGn0x1ocMcUjrGa71gWgT-tSfRw3ql5YyKGQTwQ_IaW8vmvo4CVnMqnID-8_nLpfIqez88w8AhApv_cE7c8O-BKeaojzXZGMVp7wAWgMjnjS8xgpR1MUvktIHj-Y4O5CjmV3UgOb09RA8KqW0aT77N3rF43g8y9xv5L3Gfp_w"/>
+<div>
+<p class="font-semibold">Fajar</p>
+<p class="text-xs text-gray-500">fajar@gmail.com</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xs text-gray-400">17-07-2025 02:30 PM</p>
+<p class="text-xs font-semibold text-green-500">Accepted</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<img alt="Abdul" class="w-10 h-10 rounded-full mr-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0UXWW2YfmJqoqvtvecf8_1bdbZSuTThngYb9iX-O8ghBF8WX0v4elEN0mhXf8LS_dBLgqn6egLvgoALbNfuANoeqS14IW-vekxnGtZ7ac_nrGxXzh_wWM9Aa0xNPjubRP9xP_JsPocR9PgwE0Ew0YnH6A2mXeSrdc5P4ZaAOTj_hO4DIhulk9y_tQcIb67Ka154dhvBZq9kbNOBey__wUvplJFjl7weHE9hWQ_qTMgxPqQECkn4UZGTH3eKvA56_qxJl68AUDTQ"/>
+<div>
+<p class="font-semibold">Abdul</p>
+<p class="text-xs text-gray-500">abdul@gmail.com</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xs text-gray-400">21-07-2025 12:30 AM</p>
+<p class="text-xs font-semibold text-green-500">Accepted</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+<div class="bg-white p-6 rounded-2xl shadow-md">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm text-gray-500">Upcoming Classes</p>
+<p class="text-4xl font-bold">6</p>
+<p class="text-xs text-gray-400 mt-1">Scheduled trial sessions this week</p>
+</div>
+<span class="material-icons text-gray-400">event</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-2xl shadow-md">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm text-gray-500">Registered Participants</p>
+<p class="text-4xl font-bold">32</p>
+<p class="text-xs text-gray-400 mt-1">Signed up for trial classes</p>
+</div>
+<span class="material-icons text-gray-400">group</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-2xl shadow-md">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm text-gray-500">Most Popular Subject</p>
+<p class="text-2xl font-bold">3D Modelling</p>
+<p class="text-xs text-gray-400 mt-1">Based on participant registration volume</p>
+</div>
+<span class="material-icons text-gray-400">check_box</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+<div class="bg-white p-6 rounded-2xl shadow-md">
+<h2 class="text-lg font-bold mb-4">Upcoming Classes</h2>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<div class="bg-gray-200 p-2 rounded-lg mr-3">
+<span class="material-icons text-gray-600">vrpano</span>
+</div>
+<div>
+<p class="font-semibold">UI/UX</p>
+<p class="text-xs text-gray-500">Instructor</p>
+</div>
+</div>
+<p class="text-sm text-gray-500">24 July 2025</p>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<div class="bg-gray-200 p-2 rounded-lg mr-3">
+<span class="material-icons text-gray-600">animation</span>
+</div>
+<div>
+<p class="font-semibold">3D Animation</p>
+<p class="text-xs text-gray-500">Instructor</p>
+</div>
+</div>
+<p class="text-sm text-gray-500">26 July 2025</p>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<div class="bg-gray-200 p-2 rounded-lg mr-3">
+<span class="material-icons text-gray-600">brush</span>
+</div>
+<div>
+<p class="font-semibold">Concept Art</p>
+<p class="text-xs text-gray-500">Instructor</p>
+</div>
+</div>
+<p class="text-sm text-gray-500">27 July 2025</p>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<div class="bg-gray-200 p-2 rounded-lg mr-3">
+<span class="material-icons text-gray-600">movie</span>
+</div>
+<div>
+<p class="font-semibold">2D Animation</p>
+<p class="text-xs text-gray-500">Instructor</p>
+</div>
+</div>
+<p class="text-sm text-gray-500">28 July 2025</p>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<div class="bg-gray-200 p-2 rounded-lg mr-3">
+<span class="material-icons text-gray-600">view_in_ar</span>
+</div>
+<div>
+<p class="font-semibold">3D Modeling</p>
+<p class="text-xs text-gray-500">Instructor</p>
+</div>
+</div>
+<p class="text-sm text-gray-500">29 July 2025</p>
+</div>
+</div>
+</div>
+<div class="md:col-span-2 bg-white p-6 rounded-2xl shadow-md">
+<h2 class="text-lg font-bold mb-4">Registered Participants</h2>
+<canvas id="registeredParticipantsChart"></canvas>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-1 grid grid-rows-2 gap-6">
+<div class="bg-white p-6 rounded-2xl shadow-md">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm text-gray-500">Total Courses</p>
+<p class="text-4xl font-bold">7</p>
+<p class="text-xs text-gray-400 mt-1">Total invoices issued</p>
+</div>
+<span class="material-icons text-gray-400">receipt_long</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-2xl shadow-md">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm text-gray-500">Most Enrolled</p>
+<p class="text-2xl font-bold">3D Modelling</p>
+<p class="text-xs text-gray-400 mt-1">Course with the highest active student count</p>
+</div>
+<span class="material-icons text-gray-400">school</span>
+</div>
+</div>
+</div>
+<div class="md:col-span-2 bg-white p-6 rounded-2xl shadow-md">
+<canvas class="mx-auto" id="courseDistributionChart"></canvas>
+</div>
+</div>
+</div>
+<script>
+        const monthlyRegistrationCtx = document.getElementById('monthlyRegistrationChart').getContext('2d');
+        new Chart(monthlyRegistrationCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                datasets: [{
+                    label: 'Registrations',
+                    data: [10, 20, 30, 50, 45, 70, 95],
+                    fill: false,
+                    borderColor: '#4A90E2',
+                    tension: 0.4,
+                    pointBackgroundColor: '#4A90E2',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#4A90E2',
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 20
+                        }
+                    }
+                }
+            }
+        });
+        const registeredParticipantsCtx = document.getElementById('registeredParticipantsChart').getContext('2d');
+        new Chart(registeredParticipantsCtx, {
+            type: 'bar',
+            data: {
+                labels: ['UI/UX', '3D Animation', 'Concept Art', '2D Animation', '3D Modelling', 'Digital Drawing'],
+                datasets: [{
+                    label: 'Participants',
+                    data: [12, 9, 11, 8, 28, 22],
+                    backgroundColor: '#4A90E2',
+                    borderRadius: 5,
+                    barThickness: 30
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                           stepSize: 7
+                        }
+                    }
+                }
+            }
+        });
+        const courseDistributionCtx = document.getElementById('courseDistributionChart').getContext('2d');
+        new Chart(courseDistributionCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['3D Modelling', 'Digital Drawing', 'Concept Art', 'UI/UX', '3D Animation', 'Coding', '2D Animation'],
+                datasets: [{
+                    data: [30, 20, 15, 10, 8, 7, 10],
+                    backgroundColor: [
+                        '#4A90E2',
+                        '#E67E22',
+                        '#F5A623',
+                        '#50E3C2',
+                        '#BD10E0',
+                        '#9013FE',
+                        '#417505'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            boxWidth: 20,
+                            padding: 20
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body></html>

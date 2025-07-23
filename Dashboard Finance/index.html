@@ -1,201 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Invoices Dashboard</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style type="text/tailwindcss">
-      body {
-        font-family: "Geologica", sans-serif;
-        background: linear-gradient(to right, #b3c4de, #eaeff6);
-      }
-    </style>
-  </head>
-  <body class="bg-gray-100">
-    <div class="min-h-screen">
-      <header
-        class="bg-gradient-to-r from-[#1EB8CD] to-[#E7EDF5] p-4 md:p-6 shadow-md">
-        <h1 class="text-2xl md:text-3xl font-bold text-white">Invoices</h1>
-      </header>
-      <main class="p-4 md:p-6">
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-            <div class="bg-white p-6 rounded-xl shadow-lg">
-              <div class="flex justify-between items-start">
-                <h2 class="text-[#223166] text-xl font-bold">
-                  Total Invoices Issued
-                </h2>
-                <span class="material-icons text-gray-400">person</span>
-              </div>
-              <p class="text-2xl sm:text-3xl font-bold text-gray-800 mt-2">8</p>
-              <p class="text-gray-400 text-xs mt-1">Total Invoices Issued</p>
-            </div>
-          <div class="bg-white p-6 rounded-xl shadow-lg">
-            <div class="flex justify-between items-start">
-              <h2 class="text-[#223166] text-xl font-bold">Overdue Invoices</h2>
-              <span class="text-gray-400 text-xl">$</span>
-            </div>
-            <p class="text-2xl sm:text-3xl font-bold text-gray-800 mt-2">
-              3
-            </p>
-            <p class="text-gray-400 text-xs mt-1">Overdue Invoices</p>
-          </div>
-          <div
-            class="bg-white p-6 rounded-xl shadow-lg md:col-span-2 lg:col-span-1">
-            <div class="flex justify-between items-start">
-              <h2 class="text-[#223166] text-xl font-bold">Paid Invoices</h2>
-              <span class="material-icons text-gray-400">receipt_long</span>
-            </div>
-            <p class="text-2xl sm:text-3xl font-bold text-gray-800 mt-2">+5</p>
-            <p class="text-gray-400 text-xs mt-1">
-              Total Invoices which have been paid
-            </p>
-          </div>
-        </div>
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div class="lg:col-span-2 bg-white p-4 md:p-6 rounded-xl shadow-lg">
-            <h2 class="text-[#223166] font-bold mb-4 text-xl">Invoices Statistic</h2>
-            <div class="h-64 md:h-80">
-              <canvas id="invoiceStatusChart"></canvas>
-            </div>
-          </div>
-          <div class="bg-white p-4 md:p-6 rounded-xl shadow-lg">
-            <h2 class="text-gray-800 font-bold mb-4">Unpaid Invoices</h2>
-            <div class="space-y-4">
-              <div class="flex items-center">
-                <img
-                  alt="Zakaria Ramadan avatar"
-                  class="w-10 h-10 rounded-full mr-4"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuApD3RMnCXuD017HdTUhKaqy7wSsuJEtPzuZGmtQUcnz5rDxGjat_gscHc9ZN4lGDbOq-9OPfjpUPEbyob-My--Kv0K6qFhXafGpDE6XLgoZoIzgdmqKT_QrafVqja_OaK-rVlISSn30nFLsQ7gWZMAz9GKP4gQtSOZWGv6lSu-Kf3V_ld_x770uoj7L9ua19wFCsqLX2OvWIIFfvvuhD4FXAyue8DJ85Dk3C4KnZqvjqFUBnR9NHFImLvZ1CmeLOBIovo_jt7l5Fg"
-                />
-                <div class="flex-1">
-                  <p class="font-semibold text-gray-800 text-sm sm:text-base">
-                    - Rp. 2.500.000
-                  </p>
-                  <p class="text-sm text-gray-500">Zakaria Ramadan</p>
-                </div>
-              </div>
-              <div class="flex items-center">
-                <img
-                  alt="Clauvert avatar"
-                  class="w-10 h-10 rounded-full mr-4"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgKdNaDF8ugIs0brJpDEIsJEe70XgcYqbl8I1tyG3KI6_l0YOkSnenVG-90OAifD-r7_euRmon8o_IMOoz-YEu9pfNx7LxV6vnMx2mLzqijRw2YM4vL2YsEKehD5Luj635GMo_6eLiu7lvMb7BJbChw8mnKK_6CfeOZxjeHRMga5RifynyrDep-4gnkIrlQOkNwRMMyIbGw6rSkzXAtNeJR4G2imABF-dwCi07ySPkiImz5S8Oy5c9RkU3nCj0nov1zBJ-uMYsWXQ"
-                />
-                <div class="flex-1">
-                  <p class="font-semibold text-gray-800 text-sm sm:text-base">
-                    - Rp. 1.500.000
-                  </p>
-                  <p class="text-sm text-gray-500">Clauvert</p>
-                </div>
-              </div>
-              <div class="flex items-center">
-                <img
-                  alt="Radika Nursa'ban avatar"
-                  class="w-10 h-10 rounded-full mr-4"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfWeiunzrxX2CWG0VSQHbwiA41NJWsNpxFgzT9Ez-1eOqKbJz0YtDwzo3udI0UJaEEL_Dp9JkRowY4qw7t0EXpjD2K297AIRVWXVHeOciSi_L5VEMbr_I9PBUn9Is48ZysiITv9ExWTtucIW05l5_spYOK3g6OJJOk6sDMZHm6pUmFE7ihxF439kToFDA-wBAS7noIbWKO5daID1vfGoS2I-j7JDMb7yju-Q9foSVFcA8HWIVIG-qPOM3xeFxo6HIG51IXiePdWLg"
-                />
-                <div class="flex-1">
-                  <p class="font-semibold text-gray-800 text-sm sm:text-base">
-                    - Rp. 3.000.000
-                  </p>
-                  <p class="text-sm text-gray-500">Radika Nursa'ban</p>
-                </div>
-              </div>
-              <div class="flex items-center">
-                <img
-                  alt="Fajar avatar"
-                  class="w-10 h-10 rounded-full mr-4"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBh-WNqBAVp3uj_GjP_-F4P8QaXPpFpVrVnIiM7F4PTb1WWIJC6b3rp4F3pvyCbdnXTTeYtH4hMWO1s4UVgKGiCwGmAF1UM8t9_EQRnZmJ0o-KNkGMWMtaB0e5zC5OI8UxDyIOWapEuZn2_aYMFU9Xmdw75LlS_cO3SylE2ol8qIhPIEIeK7lIFMPiF31tXserGuEuhPvmgPclkTCRAOxvj9wHN7T8Rw3OjCuolAfMWTU1Wl2oBsDbJZwM2vKON7tee4aDnFpCsW-Q"
-                />
-                <div class="flex-1">
-                  <p class="font-semibold text-gray-800 text-sm sm:text-base">
-                    - Rp. 1.000.000
-                  </p>
-                  <p class="text-sm text-gray-500">Fajar</p>
-                </div>
-              </div>
-              <div class="flex items-center">
-                <img
-                  alt="Abdul avatar"
-                  class="w-10 h-10 rounded-full mr-4"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaH0Qs9vXPNLjfBCtCKXEP0BrL24VMPr-vjVMxYhLO82cKy0Ba9HDRTIzJjMe4ntEX4FZ8Zg6lTTtZsgXXazQAz7spOVIkoJOIaD3dlX6DPNuwl30G8gVeLUcRiQ3hlBMyHDQ82_J-oJmZEI_aYSwXM57gZgkJgP3B_qrXRlmraFy2tr1LlrdsKYQ5Q9u_spV5gLJRoJ3NVfYgCv_-ysLcS93vzlAVE2GZRO8tZw5gDASrUjPO5S2VMMs4hB2TWvdZUrotxBrh8U4"
-                />
-                <div class="flex-1">
-                  <p class="font-semibold text-gray-800 text-sm sm:text-base">
-                    - Rp. 2.000.000
-                  </p>
-                  <p class="text-sm text-gray-500">Abdul</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
-    <script>
-      const ctx = document.getElementById("invoiceStatusChart").getContext("2d");
-const invoiceStatusChart = new Chart(ctx, {
-  type: "bar",
-  data: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-    datasets: [
-      {
-        label: "Paid",
-        data: [4, 8, 5, 3, 5, 7],
-        backgroundColor: "#22C55E", // hijau
-      },
-      {
-        label: "Unpaid",
-        data: [5, 1, 2, 5, 1, 1],
-        backgroundColor: "#3B82F6", // biru
-      },
-      {
-        label: "Overdue",
-        data: [1, 1, 3, 2, 4, 2],
-        backgroundColor: "#EF4444", // merah
-      },
-    ],
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        position: "top",
-      },
-    },
-    scales: {
-      x: {
-        stacked: false,
-        ticks: {
-          font: {
-            family: "'Geologica'",
-          },
-        },
-        grid: {
-          display: false,
-        },
-      },
-      y: {
-        stacked: false,
-        beginAtZero: true,
-        ticks: {
-          callback: (value) => value,
-          font: {
-            family: "'Geologica', sans-serif",
-          },
-        },
-        grid: {
-          drawBorder: false,
-        },
-      },
-    },
-  },
-});
 
-    </script>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Finance Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;500;600;700&amp;display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Geologica';
+      background: linear-gradient(to right, #b3c4de, #eaeff6);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="min-h-screen">
+    <header class="bg-gradient-to-r from-[#1EB8CD] to-[#Eaeff6] p-6">
+      <h1 class="text-3xl font-bold text-white">Finance</h1>
+    </header>
+    <main class="p-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+        <div class="bg-white p-6 rounded-2xl shadow-md flex justify-between items-center">
+          <div>
+            <p class="text-gray-500">Total Invoices Issued</p>
+            <p class="text-4xl font-bold">8</p>
+            <p class="text-sm text-gray-400">Total Invoices Issued</p>
+          </div>
+          <span class="material-icons text-gray-400 text-3xl">person</span>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-md flex justify-between items-center">
+          <div>
+            <p class="text-red-500">Overdue Invoices</p>
+            <p class="text-4xl font-bold text-red-500">3</p>
+            <p class="text-sm text-gray-400">Based on total volume</p>
+          </div>
+          <span class="material-icons text-gray-400 text-3xl">attach_money</span>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-md flex justify-between items-center">
+          <div>
+            <p class="text-gray-500">Paid Invoices</p>
+            <p class="text-4xl font-bold">+5</p>
+            <p class="text-sm text-gray-400">Total invoices which have been paid</p>
+          </div>
+          <span class="material-icons text-gray-400 text-3xl">credit_card</span>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-md flex justify-between items-center">
+          <div>
+            <p class="text-gray-500">Pending Verification</p>
+            <p class="text-4xl font-bold">3</p>
+            <p class="text-sm text-gray-400">Receipts under review</p>
+          </div>
+          <span class="material-icons text-gray-400 text-3xl">person</span>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-md flex justify-between items-center">
+          <div>
+            <p class="text-gray-500">Receipts Verified</p>
+            <p class="text-4xl font-bold">5</p>
+            <p class="text-sm text-gray-400">Total invoices which have been paid</p>
+          </div>
+          <span class="material-icons text-gray-400 text-3xl">credit_card</span>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-md flex justify-between items-center">
+          <div>
+            <p class="text-gray-500">Total Collected</p>
+            <p class="text-3xl font-bold text-green-500">Rp. 10.000.000</p>
+            <p class="text-sm text-gray-400">Based on total volume</p>
+          </div>
+          <span class="material-icons text-gray-400 text-3xl">attach_money</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 bg-white p-6 rounded-lg shadow-md">
+          <h2 class="text-xl font-semibold mb-4">Paid Invoices</h2>
+          <canvas id="paidInvoicesChart"></canvas>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h2 class="text-xl font-semibold mb-4">Pending Invoices</h2>
+          <div class="space-y-4">
+            <div class="flex items-center">
+              <img alt="Zakaria Ramadan avatar" class="w-10 h-10 rounded-full mr-4"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZyDZMMrVrx5Ma9EegLmLMWD8beRgEhHdn3bm589PYRU2ScxTVAfG-NOh5Px0vU4DDY6IGvjp_z28GxCeBMRLEHN1Tjrz45Zk-oZB3Z4B-n0wxcfV8_6frkawioGGnUMYLOT13MNmt-MQsdbVb3PZPIwBBrPHHYWdVC2p-eAN1MII4SzGdTX-j4-3gNu2Px79c6MUv6nuu0q_1tXS1_p0RhUeJJhVAxS9O8rPSUFxjJWyg7hq3SfQk7jdXMys3v71rTJzsk5OpNW8" />
+              <div>
+                <p class="font-semibold text-red-500">-Rp. 2.500.000</p>
+                <p class="text-sm text-gray-500">Zakaria Ramadan</p>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <img alt="Clauvert avatar" class="w-10 h-10 rounded-full mr-4"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAR04mLuXBD0VOpviOEg6TvmbfboztcLV-pe90M5-peAY9rh8ydA1r5nfw-iiBrk5RMAXIzM7FM3Vmdqqql2I9jNXR0-HRAWl0YRdn5SG2J3qMjd9QkHZIr4JkMX3iH5P7wLCEEMe0By4A3WTqn3a29nOtVWby0Wes6O7ZWmXg3Qh-NnU3hO6KKywfa5O-QKA4JOyWuX_9OKhyVhckxDHXplSDkjPanlGiXAf2lqzpWmgiOKaz17l6TpHqO_rWNFCd7eztiKSWwMjg" />
+              <div>
+                <p class="font-semibold text-red-500">-Rp. 1.500.000</p>
+                <p class="text-sm text-gray-500">Clauvert</p>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <img alt="Radika Nursaban avatar" class="w-10 h-10 rounded-full mr-4"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmHurujP8pHzkpJCjGbkjWswLaZyr23oWawiqIbr2isxlMnP66WA6vgdqHoyQyo4a_vOR2nftD5xAt8M0TsSoVqYIocibBO5MYNjpQ97aEDJ55EO9v0rhzKOQtNpC3swN9iNZV-G8gFs97xGYbNeEoEtCMPD1bXkdNzMiBdKkhqao4TTZbW9YTAoaTN4RBLz8di2Q7yh7HtPy9mGhzg7IAAbJ-Rn8NCTCDU8Q27CqjJAkDm246jrJ18Wacc6RrazDfnM0WGZYNc9A" />
+              <div>
+                <p class="font-semibold text-red-500">-Rp. 3.000.000</p>
+                <p class="text-sm text-gray-500">Radika Nursaban</p>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <img alt="Fajar avatar" class="w-10 h-10 rounded-full mr-4"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi_5CmkCF2VKY5A572i1ofwfeHenE2kKgd13rSwJjhQbdiXEbyd5XLATpQF17XUGS_T_m5kV5T3fMA4PzJIZZJ8QSKrjebVa25YWZBVjgvcqZI5H6SR5Nm2XNk0iYAY2C1s1iIO4-gDRbUWOejvrTE8Sqdor_qEm4Cpqhz_y89k_v4tKcn593c0PTM6kB6EIl9M_wDrYNS3ZaS8bQtxmQFusgAzDuVjbsYeMq23_M0aZVJJKs948eys_jqwQmsSlb9wbr5h21cE7Q" />
+              <div>
+                <p class="font-semibold text-red-500">-Rp. 1.000.000</p>
+                <p class="text-sm text-gray-500">Fajar</p>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <img alt="Abdul avatar" class="w-10 h-10 rounded-full mr-4"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDd8hhZXTe6CwVno5z7cCQeK94LDWC5tyEn6LwXxeKVkqe4qtfFKx_hYwcGRDVPDJkIPj1Ll-PU5ogcOC2ZLYAb0-CF-QtbVTdHR4YaWo9HrxgNosVO254zxQvjLeCWxPTz1LFV0RrC3RgR9-1Njwbo2gtIOgnAxceN9UmQ3yVa2HE-Euce8cV2Xge_ah8HEypK1ZzS1XH9aRrhCw0pwx4AaU_cSSdwERemFqehpwUY7dNrwsRquMkemI2qeIEwBFJresZRXgvfsmo" />
+              <div>
+                <p class="font-semibold text-red-500">-Rp. 2.000.000</p>
+                <p class="text-sm text-gray-500">Abdul</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h2 class="text-xl font-semibold mb-4">Recent Receipts</h2>
+          <div class="space-y-4">
+            <div class="flex items-center">
+              <img alt="Zakaria Ramadan avatar" class="w-10 h-10 rounded-full mr-4"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtA85ZcNaiZ2E4DNWDMLW1QKuJxvwU3umx75gEJLQqEo6lIRw6WThnkCFAzZcfSZWQCcWfFihWwqWDVd2PRdYm6GQkt9VocpBS7rtmYFY5RX3erqwzMQqn_kXyesPZwWyp9moy4tFRoVxeeRx65_ttC8Vzeic2H02F8L4MYIUgmGN8LLaiW61jtGinzs7dlsZHbacLsTrD-enNOBJNgNWpl3_ppM5NIo0zoJLNAdcf0DI08IWiHz8Gx3aciCQ8CmYzonTH5YsuZo8" />
+              <div>
+                <p class="font-semibold text-green-500">+Rp. 2.500.000</p>
+                <p class="text-sm text-gray-500">Zakaria Ramadan</p>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <img alt="Clauvert avatar" class="w-10 h-10 rounded-full mr-4"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA_lfPyzqRSEciNOkNQIwdaWyUyoVugac5rjaG5p_kr13ijzGdumjurriPjNo3snhMtfgsum5oj892WODaRZy2WzHUlOl7DkBCf4t-6liHKybbfYXPtaIJFkhE0CNAhDeWtLWIVOnksmE39N2Rf4gpevOgAqZnXcOThByLzXkRQ1-znV9wCqtUhSvd2nwF_m6ZKv_Bu0PvZ9EPiZjr5FrHIdYAFFFSnsFjRT4a4Cc2JVWEcD4he3ONdgktKH9HE1jO7BvfJLVbz9E" />
+              <div>
+                <p class="font-semibold text-green-500">+Rp. 1.500.000</p>
+                <p class="text-sm text-gray-500">Clauvert</p>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <img alt="Radika Nursaban avatar" class="w-10 h-10 rounded-full mr-4"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW1NiwU9Msa4UhCZW3yrN8L3N4ToUeOHKEfzA85GXlwkgiqkl1yV3CAWnieKGZ_N9IFJo9pIyL0NZm5vaLR14t1g5ch3_s4QbZYleCg5mwrMVv5k3b8P17z4A1CIjkv_ieLzJFDbpCkCDi46v8MRgGrfB9_hbHrl0T6sJHVbnwrXeZPNvT_qnowleUzZ68NNxf5tDkU-oJBOZOzG0wtcJAtelus67Ff1C0h77b6E6AK6n9MopZdfr-mXLwYleAkQzfIsRGCA60jLA" />
+              <div>
+                <p class="font-semibold text-green-500">+Rp. 3.000.000</p>
+                <p class="text-sm text-gray-500">Radika Nursaban</p>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <img alt="Fajar avatar" class="w-10 h-10 rounded-full mr-4"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKkv877qf_DzmYW5udsp3IpQjKTpe2CvkV4jl_PefyfsmFSgSs2ZQfmKuof2BS5jQcSe82uh2G1iXMPopsfrh06Jz6vURcENaFF3_4tZBil28ktMvlgoqg_PfymKbonudmsYip8rLtljp8II9nhoVZFuXmXPvFZt2Yg2zTfpohmfHAhmyn6AbRJHkXh_DeOQmqUxQpRnrVky4YbApMQyOpvKFZapLDGdgAUUxYOzZX1TCKbhg-EUAFTo96dOZgfCFR-jWaFTnl1wo" />
+              <div>
+                <p class="font-semibold text-green-500">+Rp. 1.000.000</p>
+                <p class="text-sm text-gray-500">Fajar</p>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <img alt="Abdul avatar" class="w-10 h-10 rounded-full mr-4"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTwfry5_d8EqHnCU84BWG5HicmJGov5iXYKeCMD_FkCatdxbzmWJbsI9Q4tKT_fTlfCCEEJ2xPJE5T0XlQ0A6UjPn1UpwZWupRdYqY1MfYUe0SZEhLAIWqlXZeG214hOiVFH9u4TzdeQm2gOTCNiOF5HWEiMBJe5O7qRrQH6tclKsLpUzRIyG-pZJ6M6PSOe0gO2kltMezXIvCBxKpF3-_sXLAqdzq0JPMQQalcGiYVEp8BC26njKUI1ZqHKWXcejzdhx6wWNAVKw" />
+              <div>
+                <p class="font-semibold text-green-500">+Rp. 2.000.000</p>
+                <p class="text-sm text-gray-500">Abdul</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-2 bg-white p-6 rounded-lg shadow-md relative w-full overflow-x-auto max-w-full h-70">
+          <h2 class="text-xl font-semibold mb-4">Paid Invoices</h2>
+          <canvas id="paidInvoicesLineChart" class="h-64"></canvas>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script>
+    const paidInvoicesCtx = document.getElementById('paidInvoicesChart').getContext('2d');
+  new Chart(paidInvoicesCtx, {
+    type: 'bar',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      datasets: [
+        {
+          label: 'Paid',
+          data: [6, 4.5, 2.5, 1, 10, 9],
+          backgroundColor: '#3b82f6',
+        },
+        {
+          label: 'Unpaid',
+          data: [4, 7, 5, 2, 12, 11],
+          backgroundColor: '#6b7280',
+        },
+        {
+          label: 'Overdue',
+          data: [2, 3, 1, 0.5, 2, 3],
+          backgroundColor: '#ef4444',
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            stepSize: 5,
+            font: { family: "'Geologica', sans-serif" }
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          position: 'top',
+          align: 'end',
+          labels: {
+            usePointStyle: true,
+            boxWidth: 6
+          }
+        }
+      }
+    }
+  });
+
+  const paidInvoicesLineCtx = document.getElementById('paidInvoicesLineChart').getContext('2d');
+        new Chart(paidInvoicesLineCtx, {
+            type: 'line',
+            data: {
+                labels: ['23 July', '24', '25', '26', '27'],
+                datasets: [{
+                    label: 'Paid Invoices',
+                    data: [30000, 32000, 31000, 35000, 38000],
+                    borderColor: '#6b7280',
+                    tension: 0,
+                    fill: false,
+                    pointBackgroundColor: '#6b7280',
+                    pointBorderColor: '#6b7280',
+                    pointRadius: (context) => {
+                        const index = context.dataIndex;
+                        return index === context.dataset.data.length - 1 ? 6 : 4;
+                    },
+                    pointHoverRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        ticks: {
+                            callback: function(value, index, values) {
+                                return '$' + (value / 1000) + 'k';
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+  </script>
+
+</body>
+
 </html>
